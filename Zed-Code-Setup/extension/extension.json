@@ -1,0 +1,20 @@
+{
+  "name": "run-ts",
+  "display_name": "Run TypeScript",
+  "version": "1.0.0",
+  "description": "Run the current TypeScript file directly from Zed using tsx or ts-node.",
+  "authors": ["Your Name"],
+  "repository": "",
+  "commands": [
+    {
+      "id": "run-ts.execute",
+      "title": "Run TypeScript File",
+      "run": {
+        "command": "${extensionDir}/run-ts.sh",
+        "args": ["${file}"],
+        "type": "shell"
+      }
+    }
+  ]
+}
+

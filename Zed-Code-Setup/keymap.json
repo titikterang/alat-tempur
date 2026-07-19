@@ -1,0 +1,35 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      // Toggle your deep LSP type/parameter hints
+      "cmd-shift-i": "editor::ToggleInlayHints",
+      // Force manual formatting
+      "cmd-alt-l": "editor::Format"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      // Show/hide the bottom dock
+      "cmd-j": "workspace::ToggleBottomDock",
+      // Open the Zed task modal
+      "cmd-shift-r": "task::Spawn",
+      "cmd-shift-t": [
+        "task::Spawn",
+        {
+          "task_name": "Run TypeScript"
+        }
+      ],
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      // Kill terminal sessions to save CPU
+      "cmd-w": "pane::CloseActiveItem",
+      // Clear the terminal buffer
+      "cmd-k": "terminal::Clear"
+    }
+  }
+]

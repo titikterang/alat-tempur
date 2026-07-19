@@ -1,0 +1,232 @@
+{
+  "autosave": "on_focus_change",
+  "buffer_font_family": "JetBrains Mono NL",
+  "buffer_font_size": 14,
+  "ui_font_size": 15,
+  "base_keymap": "JetBrains",
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Ayu Dark"
+  },
+  "icon_theme": "Material Icon Theme",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "instrumentation": {
+    "performance_profiler": {
+      "enabled": false
+    }
+  },
+  "agent_servers": {
+    "cursor": {
+      "default_config_options": {
+        "model": "default",
+        "mode": "agent"
+      },
+      "type": "custom",
+      "command": "your cursor-agent path", // ~/.local/bin/cursor-agent
+      "args": [
+        "acp"
+      ]
+    },
+    "glm": {
+      "default_mode": "default",
+      "type": "custom",
+      "command": "your glm-acp-agent path", // ~/.local/bin/glm-acp-agent
+      "env": {
+        "Z_AI_API_KEY": "-",
+        "ACP_GLM_AVAILABLE_MODELS": "glm-5.2,glm-5-turbo",
+        "ACP_GLM_MODEL": "glm-5.2"
+      }
+    }
+  },
+  // ─── Editor UX ───────────────────────────────────────────────
+  "cursor_blink": false,
+  "cursor_shape": "bar",
+  "show_whitespaces": "selection",
+  "vertical_scroll_margin": 5,
+  "horizontal_scroll_margin": 5,
+  "remove_trailing_whitespace_on_save": true,
+  "ensure_final_newline_on_save": true,
+  "git": {
+    "inline_blame": {
+      "enabled": true
+    }
+  },
+  // ─── Global Formatting & CPU Management ──────────────────────
+  "formatter": "language_server",
+  "format_on_save": "on",
+  // INLAY HINTS: Disabled by default to prevent Intel CPU thermal throttling.
+  // Map 'editor::ToggleInlayHints' in your keymap.json to use your deep LSP hint configs on-demand.
+  "inlay_hints": {
+    "enabled": false,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true
+  },
+  // ─── Terminal ────────────────────────────────────────────────
+  "terminal": {
+    "font_family": "JetBrains Mono NL",
+    "font_size": 13,
+    "copy_on_select": true,
+    "shell": {
+      "with_arguments": {
+        "program": "zsh",
+        "args": [
+          "-l",
+          "-i"
+        ]
+      }
+    }
+  },
+  // ─── Language Configurations ─────────────────────────────────
+  "languages": {
+    "Rust": {
+      "language_servers": [
+        "rust-analyzer"
+      ],
+      "formatter": "language_server"
+    },
+    "Go": {
+      "language_servers": [
+        "gopls"
+      ],
+      "formatter": "language_server",
+      "tab_size": 4,
+      "code_actions_on_format": {
+        "source.organizeImports": true
+      }
+    },
+    "TypeScript": {
+      "language_servers": [
+        "vtsls",
+        "eslint"
+      ],
+      "formatter": "language_server",
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+        "source.organizeImports": true
+      }
+    },
+    "TSX": {
+      "language_servers": [
+        "vtsls",
+        "eslint"
+      ],
+      "formatter": "language_server",
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+        "source.organizeImports": true
+      }
+    },
+    "JavaScript": {
+      "language_servers": [
+        "vtsls",
+        "eslint"
+      ],
+      "formatter": "language_server",
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "JSX": {
+      "language_servers": [
+        "vtsls",
+        "eslint"
+      ],
+      "formatter": "language_server",
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    }
+  },
+  // ─── LSP Initialization Options ──────────────────────────────
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "check": {
+          "command": "clippy"
+        },
+        "cargo": {
+          "allFeatures": true
+        },
+        "inlayHints": {
+          "lifetimeElisionHints": {
+            "enable": "skip_trivial"
+          },
+          "closingBraceHints": {
+            "minLines": 5
+          }
+        },
+        "completion": {
+          "fullFunctionSignatures": {
+            "enable": true
+          },
+          "autoimport": {
+            "enable": true
+          }
+        },
+        "diagnostics": {
+          "enable": true,
+          "experimental": {
+            "enable": true
+          }
+        },
+        "assist": {
+          "importGranularity": "module",
+          "importEnforceGranularity": true,
+          "importPrefix": "by_self"
+        }
+      }
+    },
+    "gopls": {
+      "initialization_options": {
+        "usePlaceholders": true,
+        "completeUnimported": true,
+        "deepCompletion": true,
+        "staticcheck": true,
+        "analyses": {
+          "unusedparams": true,
+          "shadow": true,
+          "nilness": true,
+          "unusedwrite": true
+        },
+        "hints": {
+          "assignVariableTypes": true,
+          "compositeLiteralFields": true,
+          "compositeLiteralTypes": true,
+          "constantValues": true,
+          "functionTypeParameters": true,
+          "parameterNames": true,
+          "rangeVariableTypes": true
+        }
+      }
+    },
+    "vtsls": {
+      "initialization_options": {
+        "typescript": {
+          "preferences": {
+            "importModuleSpecifierPreference": "non-relative",
+            "preferTypeOnlyAutoImports": true
+          },
+          "inlayHints": {
+            "parameterNames": {
+              "enabled": "all"
+            },
+            "functionLikeReturnTypes": {
+              "enabled": true
+            },
+            "variableTypes": {
+              "enabled": true
+            },
+            "propertyDeclarationTypes": {
+              "enabled": true
+            }
+          }
+        }
+      }
+    }
+  }
+}
